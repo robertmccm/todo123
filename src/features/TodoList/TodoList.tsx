@@ -1,6 +1,7 @@
 import style from '@/styles/TodoList.module.css'
 import  {connect} from 'react-redux';
 import TodoCard from './TodoCard';
+import TodoForm from './TodoForm';
 
 
 function TodoList (props: any) {
@@ -11,7 +12,9 @@ function TodoList (props: any) {
           {props.todos.map((todo: any) => (
             <TodoCard key={todo.id} todo={todo}/>
           ))}
+          <TodoForm/>
       </div>
+
     </>
   );
 }
