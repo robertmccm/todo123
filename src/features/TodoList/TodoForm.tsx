@@ -2,16 +2,17 @@ import Button from '@mui/material/Button';
 import { Card, CardContent } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import {connect} from 'react-redux';
-import {useState} from 'react';
+import {FormEvent, useState} from 'react';
+import {Dispatch} from 'redux';
 
-function TodoForm({dispatch}) {
+function TodoForm({dispatch}: {dispatch: Dispatch}) {
   const [todoText, setTodoText] = useState('');
-  const handleChange = (e) => {
+  const handleChange = (e: FormEvent) => {
     e.preventDefault();
-    setTodoText(e.target.value);
+    setTodoText((e.target as HTMLInputElement).value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch({type: 'ADD_TODO', payload: {
       id: Math.random(),
